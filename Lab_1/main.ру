@@ -1,0 +1,34 @@
+import math
+
+def get_float_input(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Неправильный ввод, введите число!")
+
+def calculate_discriminant(a, b, c):
+    return b**2 - 4*a*c
+
+def find_roots(a, b, D):
+    if D < 0:
+        return "Корней нет"
+    elif D == 0:
+        root = -b / (2 * a)
+        return f"Один корень: {root}"
+    else:
+        root1 = (-b - math.sqrt(D)) / (2 * a)
+        root2 = (-b + math.sqrt(D)) / (2 * a)
+        return f"Корни: {root1}, {root2}"
+
+def main():
+    a = get_float_input("Введите параметр a: ")
+    b = get_float_input("Введите параметр b: ")
+    c = get_float_input("Введите параметр c: ")
+
+    D = calculate_discriminant(a, b, c)
+    print("Дискриминант:", D)
+
+    result = find_roots(a, b, D)
+    print(result)
+main()
